@@ -10,18 +10,25 @@ import random
 
 def main():
     # This program is the final version of the guessing game
-    random_number = random.randint(0, 9)
 
     # input
+    random_number = random.randint(0, 9)
+    counter = 0
+
+    # process and output
     while True:
         user_guess_as_string = input("Enter a random number between 0-9(integer): ")
         print("")
 
         try:
             user_guess_as_integer = int(user_guess_as_string)
+            counter = counter + 1
             if user_guess_as_integer == random_number:
-                print("Horray, you guessed correctly :)")
-                print("Done.")
+                print(
+                    "Hooray, you guessed correctly :), and it only took you {0} tries:)".format(
+                        counter
+                    )
+                )
                 break
             elif user_guess_as_integer > random_number:
                 print("The number is too high enter a lower number.")
@@ -34,8 +41,8 @@ def main():
                     user_guess_as_string
                 )
             )
-
-        print("\nDone.")
+        finally:
+            print("\nDone.")
 
 
 if __name__ == "__main__":
